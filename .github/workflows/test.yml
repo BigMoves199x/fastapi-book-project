@@ -20,11 +20,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m venv venv
+          echo "VIRTUAL_ENV=venv" >> $GITHUB_ENV
+          echo "$PWD/venv/bin" >> $GITHUB_PATH
           source venv/bin/activate
           pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest pytest-cov
 
       - name: Run tests
-        run: |
-          source venv/bin/activate
-          pytest --maxfail=1 --disable-warnings --cov=api
+        run: pytest --maxfail=1 --disable-warnings --cov=api
