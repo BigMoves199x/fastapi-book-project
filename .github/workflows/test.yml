@@ -23,9 +23,9 @@ jobs:
           echo "VIRTUAL_ENV=venv" >> $GITHUB_ENV
           echo "$PWD/venv/bin" >> $GITHUB_PATH
           source venv/bin/activate
-          python -m pip install --upgrade pip setuptools wheel
-          pip install -r requirements.txt || { echo "⚠️ Failed to install requirements.txt"; exit 1; }
-          pip install pytest pytest-cov || { echo "⚠️ Failed to install pytest"; exit 1; }
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
 
       - name: Run tests
         run: pytest --maxfail=1 --disable-warnings --cov=api
