@@ -28,4 +28,4 @@ jobs:
           pip install pytest pytest-cov
 
       - name: Run tests
-        run: pytest --maxfail=1 --disable-warnings --cov=api
+        run: pytest
